@@ -1,0 +1,34 @@
+
+<div class="buttons">
+         <button (click)="daaklika(1)">Salads</button>
+         <button (click)="daaklika(2)">Soups</button>
+         <button (click)="daaklika(3)">Chicken-Dishes</button>
+         <button (click)="daaklika(4)">Beef-Dishe</button>
+         <button (click)="daaklika(5)">Seafood-Dishes</button>
+         <button (click)="daaklika(6)">Vegetable-Dishes</button>
+         <button (click)="daaklika(7)">Bits&Bites</button>
+         <button (click)="daaklika(8)">On-The-Side</button>
+         <button (click)="showall()">show all</button>
+  </div>
+  <div class="spiciness">
+    <input [(ngModel)]="spiceLevel" (ngModelChange)="filterSpice(spiceLevel)" type="range" max="4" min="0" >
+    <p>{{ spiceLevel }}</p>
+  </div>
+<div class="rame">
+  <div class="price">
+    <input type="number" placeholder="min" min="0" [(ngModel)]="min">
+    <input type="number" placeholder="max" min="0" [(ngModel)]="max">
+    <button (click)="rangeprice()">sumbit</button>
+  </div>
+  @for (item of filteredItems; track $index) {
+    <div class="card" style="width: 18rem;" (click)="kliki(item)">
+      <img class="card-img-top" [src]="item.image" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{item.name}}</h5>
+        <p class="card-text">{{item.price}}</p>
+        <p class="card-text">{{item.nuts}}</p>
+        <p class="card-text">{{item.spiciness}}</p>
+      </div>
+    </div>
+  }
+</div>
