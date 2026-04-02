@@ -1,0 +1,38 @@
+<h1>To do app</h1>
+<div class="Task">
+    <input type="text" [(ngModel)]="Text">
+    <div class="rame">
+
+    
+    <input [(ngModel)]="count" type="range" min="1" max="5">
+    </div>
+    <h2>{{count}}</h2>
+    <button (click)="Addtaskapp()">{{Addtask}}</button>
+</div>
+
+<div class="filter">
+    <button (click)="asc()">{{asce}}</button>
+    <select name="" id="" [(ngModel)]="filterbypriority" (ngModelChange)="filterbypri($event)">
+        <option value="">select priority</option>
+        <option value="1">⭐</option>
+        <option value="2">⭐⭐</option>
+        <option value="3">⭐⭐⭐</option>
+        <option value="4">⭐⭐⭐⭐</option>
+        <option value="5">⭐⭐⭐⭐⭐</option>
+    </select>
+</div>
+
+    <div class="filtasks">
+        @for (item of filteredTasks; track $index) {
+            <div class="wholetask">
+        <h2 [ngClass]="{Comp : item.completed}">{{item.Name}}</h2>
+        <p>{{"⭐".repeat(item.priority)}}</p>
+        <div class="buttons">
+        <button (click)="Complete(item)">{{ item.completed ? "Undo" : "Complete" }}</button>
+        <button (click)="remove(item)">Remove</button>
+        <button (click)="edit(item)">{{item.edit ? "edit" : "save"}}</button>
+        </div>
+        <input type="text" [ngClass] = "{hidden : item.edit}" [(ngModel)] = "item.Name" >
+        </div>
+        }
+    </div>
